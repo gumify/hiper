@@ -61,7 +61,7 @@ class GetRequest(
             text = String(bytes)
         }
 
-        for ((k, v) in response.headers) headers.put(k, v)
+        for ((k, v) in response.headers) headers[k.lowercase()] = v
 
         return HiperResponse(
             isRedirect = response.isRedirect,
@@ -94,7 +94,7 @@ class GetRequest(
                     text = String(bytes)
                 }
 
-                for ((k, v) in response.headers) headers[k] = v
+                for ((k, v) in response.headers) headers[k.lowercase()] = v
 
                 val hiperResponse = HiperResponse(
                     isRedirect = response.isRedirect,
