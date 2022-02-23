@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
             HiperExampleTheme {
                 val context = LocalContext.current
                 val tart = remember { Tart(context = context, name = "test_store") }
-                val textState = tart.get("name").collectAsState(initial = "hello, world")
+                val textState = tart.getString("name").collectAsState(initial = "hello, world")
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
