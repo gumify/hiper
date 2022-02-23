@@ -17,27 +17,27 @@ class Tart(private val context: Context, name: String) {
         }
     )
 
-    fun getString(key: String): Flow<String> {
+    fun getString(key: String, default: String = ""): Flow<String> {
         return context.dataStore.data.map { pref ->
-            pref[stringPreferencesKey(key)] ?: ""
+            pref[stringPreferencesKey(key)] ?: default
         }
     }
 
-    fun getInt(key: String): Flow<Int> {
+    fun getInt(key: String, default: Int = 0): Flow<Int> {
         return context.dataStore.data.map { pref ->
-            pref[stringPreferencesKey(key)]?.toInt() ?: 0
+            pref[stringPreferencesKey(key)]?.toInt() ?: default
         }
     }
 
-    fun getBoolean(key: String): Flow<Boolean> {
+    fun getBoolean(key: String, default: Boolean): Flow<Boolean> {
         return context.dataStore.data.map { pref ->
-            pref[stringPreferencesKey(key)].toBoolean()
+            pref[stringPreferencesKey(key)]?.toBoolean() ?: default
         }
     }
 
-    fun getFloat(key: String): Flow<Float> {
+    fun getFloat(key: String, default: Float = 0f): Flow<Float> {
         return context.dataStore.data.map { pref ->
-            pref[stringPreferencesKey(key)]?.toFloat() ?: 0f
+            pref[stringPreferencesKey(key)]?.toFloat() ?: default
         }
     }
 
