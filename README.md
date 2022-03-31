@@ -88,16 +88,16 @@ val hiper = Hiper.getInstance().async() // for asynchronous requests
 ### Sending a simple GET request
 
 ```kotlin
-val caller = hiper.get("http://httpbin.org/get") {
-    debug(text)
+val caller = hiper.get("http://httpbin.org/get") { response ->
+    debug(response.text)
 }
 ```
 
 ### Sending a simple POST request
 
 ```kotlin
-val caller = hiper.post("http://httpbin.org/post") {
-    debug(this)
+val caller = hiper.post("http://httpbin.org/post") { response ->
+    debug(response.this)
 }
 ```
 
